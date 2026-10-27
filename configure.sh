@@ -47,7 +47,7 @@ if [ "$PY_MAJOR" -lt 3 ] || ([ "$PY_MAJOR" -eq 3 ] && [ "$PY_MINOR" -lt 11 ]); t
 fi
 printf "  ${GREEN}✓${NC} Python ${PY_VERSION} found\n"
 
-IDENTITY=$(aws sts get-caller-identity 2>&1)
+IDENTITY=$(aws sts get-caller-identity --output json 2>&1)
 if [ $? -ne 0 ]; then
     printf "  ${RED}✗ Failed to get caller identity. Check your AWS credentials.${NC}\n"
     exit 1
